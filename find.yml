@@ -1,0 +1,22 @@
+---
+  
+  - name: "Validating targetUri"
+    hosts: all
+
+    tasks:
+    - name: "finding targetUri"
+      find:
+         paths: /home/client/pagal
+         patterns: "filename"
+         file_type: file
+         use_regex: false
+         contains: "targetUri = splunkcdl.es.ad.adp.com"
+      register: output
+
+    - name: debug
+      debug:
+        var: output
+        
+        
+         
+      

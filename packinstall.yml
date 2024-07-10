@@ -1,0 +1,26 @@
+---
+
+- name: Installing and running apache
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Installing httpd
+      yum:
+       name: httpd
+       state: present
+
+    - name: running httpd
+      service:
+       name: httpd
+       state: started
+
+    - name: checking
+      shell: systemctl status httpd
+      regiser: status_http
+
+    - name: status
+      debug:
+        var: status_http
+

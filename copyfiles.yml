@@ -1,0 +1,13 @@
+---
+
+- name: "copying files from local/control node to remote client"
+  hosts: all
+
+  tasks:
+    - name: "copying files"
+      copy:
+       src: /home/server/pagal
+       dest: /home/testuser
+       owner: client
+       group: root
+       mode: 777

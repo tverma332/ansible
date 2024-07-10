@@ -1,0 +1,7 @@
+---
+- name: "testing connectivity of remote clients"
+  hosts: all
+
+  tasks:
+    - name: "testing remote connectivit"
+      ping:
