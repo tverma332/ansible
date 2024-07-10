@@ -2,12 +2,24 @@
 
 - name: "copying files from local/control node to remote client"
   hosts: all
+    # become: true
 
   tasks:
-    - name: "copying files"
+    - name:  "copying files"
+      become: true
+
       copy:
-       src: /home/server/pagal
-       dest: /home/testuser
+
+       src: /root/hello
+       dest: /root
        owner: client
-       group: root
-       mode: 777
+       group: client
+       mode: 0777
+
+    - name: "checking which user running"
+      shell: whoami
+      register: user_is
+
+    - name: "user"
+      debug:
+        var: user_is
