@@ -1,0 +1,26 @@
+---
+
+- name: "copying files from local/control node to remote client"
+  hosts: all
+  become: true
+    #  become_method: sudo
+
+  tasks:
+    - name:  "copying files"
+
+      copy:
+
+       src: /home/client/gaurav
+       dest: /home/testuser
+       owner: client
+       group: client
+       mode: 0777
+       remote_src: true
+
+    - name: "checking which user running"
+      shell: whoami
+      register: user_is
+
+    - name: "user"
+      debug:
+        var: user_is
