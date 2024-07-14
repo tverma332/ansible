@@ -1,0 +1,10 @@
+---
+
+ - name: Changing file permission
+   hosts: all
+
+   tasks:
+    - name: change permission
+      file:
+       path: /home/client/hello
+       mode: 0222
